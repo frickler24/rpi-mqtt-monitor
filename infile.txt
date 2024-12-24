@@ -1,0 +1,9 @@
+y
+2
+frickler.duckdns.org
+mqttmonitor
+GEHEIMESPASSWORT
+1883
+rpi-MQTT-monitor
+y
+s
