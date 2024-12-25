@@ -1,4 +1,5 @@
 #script config file
+**/remote_install.sh
 config.py
 update.sh
 rpi-mqtt-monitor.iml
