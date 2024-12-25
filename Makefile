@@ -7,14 +7,14 @@ clean:
 monitor:
 	docker run -d \
 		--hostname FROM-$(shell hostname) \
-		--restart always \
+		--restart unless-stopped \
 		--name monitor \
 		monitor
 
 monitor_cmd:
 	docker run -d \
 		--hostname FROM-$(shell hostname) \
-		--restart always \
+		--restart unless-stopped \
 		--name monitor \
 		--user monitor \
 		monitor sh -c \
