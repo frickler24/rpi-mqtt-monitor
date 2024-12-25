@@ -16,7 +16,7 @@ RUN apt install -y \
 	htop \
 	sudo
 
-ARG	MYPASSWD
+ARG MYPASSWD
 ARG MQTTPASSWD
 RUN useradd --groups sudo --create-home --shell /bin/bash monitor && echo monitor:$MYPASSWD | chpasswd
 

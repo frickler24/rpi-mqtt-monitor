@@ -156,10 +156,10 @@ def read_ext_sensors():
 def check_cpu_temp():
     full_cmd = f"awk '{{printf (\"%.2f\\n\", $1/1000); }}' $(for zone in /sys/class/thermal/thermal_zone*/; do grep -iq \"{config.cpu_thermal_zone}\" \"${{zone}}type\" && echo \"${{zone}}temp\"; done)"    
     try:
-        p = subprocess.Popen(full_cmd, shell=True, stdout=subprocess.PIPE).communicate()[0]
+        p = subprocess.Popen(full_cmd, shell=True, stdout=subprocess.PIPE).communicate(timeout=3)[0]
         cpu_temp = p.decode("utf-8").strip().replace(",", ".")
     except Exception:
-        cpu_temp = 0
+        cpu_temp = "unknown - invalid entry in config,py (cpu_thermal_zone)?"
 
     return cpu_temp
 
@@ -307,6 +307,17 @@ def get_hwmon_temp(hwmon_path):
         return None
 
 
+def get_unique_drivename(device_name: str, drive_temps: {}) -> str:
+    i = 1
+    new_name = f"{device_name}{i}"
+    while new_name in drive_temps:
+        i += 1
+        new_name = f"{device_name}{i}"
+
+    print(f'{new_name:}')
+    return new_name
+
+
 def check_all_drive_temps():
     drive_temps = {}
     hwmon_devices = glob.glob('/sys/class/hwmon/hwmon*')
@@ -315,7 +326,7 @@ def check_all_drive_temps():
         if device_name and any(keyword in device_name.lower() for keyword in ['nvme', 'sd']):
             temp = get_hwmon_temp(hwmon)
             if temp is not None:
-                drive_temps[device_name] = temp
+                drive_temps[get_unique_drivename(device_name, drive_temps)] = temp
     return drive_temps
 
 

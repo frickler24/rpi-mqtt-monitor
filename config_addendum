@@ -6,7 +6,7 @@ version = '1.1.2'
 # MQTT server configuration
 mqtt_host = "frickler.duckdns.org"
 mqtt_user = "mqttmonitor"
-mqtt_password = "Broadcast-Unproportional-Kdebugrc-Geschichtsschreibung-Drehzahl-Vierdecker-Aufstand-Schwache"
+mqtt_password = ""
 mqtt_port = "1883"
 mqtt_discovery_prefix = "homeassistant"
 mqtt_topic_prefix = "rpi-MQTT-monitor"
@@ -53,10 +53,10 @@ shutdown_button = True
 update = True
 
 # Enable control of attached display(s) via Home Assistant
-display_control = False
+display_control = True
 
 # user for which display_control is enabled
-os_user = 'root'
+os_user = 'monitor'
 
 # By default, the 'hostname' will be used as device name in home assistant.
 # To set a custom device name, uncomment the following line and set the custom name.
@@ -71,19 +71,19 @@ cpu_load = True
 cpu_temp = True
 used_space = True
 used_space_path = '/'
-voltage = False
-sys_clock_speed = False
-swap = False
+voltage = True
+sys_clock_speed = True
+swap = True
 memory = True
 uptime = True
-uptime_seconds = False
+uptime_seconds = True
 
 # Check storage devices temperatures - experimental feature, disabled by default
-drive_temps = False
+drive_temps = True
 
 # Enable wifi_signal for unit of measuring % or wifi_signal_dbm for unit of meaning dBm
-wifi_signal = False
-wifi_signal_dbm = False
+wifi_signal = True
+wifi_signal_dbm = True
 
 # This works only on raspbery pi version 5 with stock fan
 rpi5_fan_speed = False
@@ -92,7 +92,7 @@ rpi5_fan_speed = False
 rpi_power_status = False
 
 # Check for apt updates - experimental feature, disabled by default, updated with update_check_interval
-apt_updates = False
+apt_updates = True
 
 # Change the thermal zone if you have issues with cpu temps
 cpu_thermal_zone = 'cpu'
