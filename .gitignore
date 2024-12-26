@@ -1,11 +1,11 @@
 #just local to frickler24
-blue-config.py
-remote_install.sh
+**/remote_install.sh
+
 #script config file
-config.py
+config*.py
 update.sh
 rpi-mqtt-monitor.iml
-<
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -145,7 +145,3 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-
-# VI tmp-files
-*.swp
-
