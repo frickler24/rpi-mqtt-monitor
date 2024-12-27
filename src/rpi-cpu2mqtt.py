@@ -309,12 +309,10 @@ def get_hwmon_temp(hwmon_path):
 
 def get_unique_drivename(device_name: str, drive_temps: {}) -> str:
     i = 1
-    new_name = f"{device_name}{i}"
+    new_name = device_name
     while new_name in drive_temps:
         i += 1
         new_name = f"{device_name}{i}"
-
-    print(f'{new_name:}')
     return new_name
 
 
