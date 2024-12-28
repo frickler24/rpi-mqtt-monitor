@@ -47,8 +47,9 @@ def check_wifi_signal(format):
 
 
 def check_used_space(path):
-    print(f'{st:}')
+    print("check_used_path called.")
     st = os.statvfs(path)
+    print(f'{st:}')
     free_space = st.f_bavail * st.f_frsize
     total_space = st.f_blocks * st.f_frsize
     used_space = int(100 - ((free_space / total_space) * 100))
