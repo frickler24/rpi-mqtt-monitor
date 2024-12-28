@@ -19,13 +19,14 @@ RUN apt install -y \
 #
 # See comment below
 ARG MYPASSWD
-ARG MQTTPASSWD
 
 # Create new user with hardly any permission
 RUN useradd --groups sudo --create-home --shell /bin/bash monitor && echo monitor:$MYPASSWD | chpasswd
 
 WORKDIR /home/monitor
 
+# clone and build the app, changing INCUBATOR_VER will break the cache here
+ARG INCUBATOR_VER=unknown
 RUN curl -s https://raw.githubusercontent.com/frickler24/rpi-mqtt-monitor/other_machines/remote_install.sh > /tmp/inst.sh
 
 #
